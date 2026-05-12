@@ -1,8 +1,13 @@
-# Init Agent Discovery
+---
+name: create-claude-md
+description: Use this skill when the user is bootstrapping a new Claude Code agent for their specific workflow and needs to discover purpose, workflow stages, artifacts, and pain points before generating a memory structure, templates, and starting CLAUDE.md. Triggers on phrases like "set up my agent", "build an agent for my workflow", "design my agent's memory", "bootstrap CLAUDE.md", "create CLAUDE.md", or "I want an agent that helps me with X". Aimed at founders, ops leads, and small-org operators who run their own agent. Do not use for general project init — use `/init` for that.
+---
+
+# Create CLAUDE.md
 
 ## Overview
 
-Guide users through discovering their agent's purpose, workflow, pain points, and artifacts to design a memory structure and generate a starting CLAUDE.md. This command is for small org operators (startups, agencies, consultancies) building agents tailored to their specific workflows.
+Guide users through discovering their agent's purpose, workflow, pain points, and artifacts to design a memory structure and generate a starting CLAUDE.md. This skill is for small org operators (startups, agencies, consultancies) building agents tailored to their specific workflows.
 
 ## Purpose & Value
 
@@ -14,7 +19,7 @@ Setting up an agent requires understanding:
 - **What** frustrates users (pain points, inefficiencies, gaps)
 - **What** gets created (artifacts, information, outputs)
 - **How** to organize it (memory structure matching their mental model)
-- **What** to automate (suggested commands to reduce friction)
+- **What** to automate (suggested skills to reduce friction)
 
 This is discovery-based: we learn the user's specific workflow and synthesize it into a tailored memory structure and starting system prompt (CLAUDE.md).
 
@@ -22,7 +27,7 @@ This is discovery-based: we learn the user's specific workflow and synthesize it
 
 - Eliminates guesswork about what the agent should help with
 - Ensures memory structure matches user's mental model and actual workflow
-- Identifies automation opportunities (suggested commands)
+- Identifies automation opportunities (suggested skills)
 - Creates templates matching discovered artifact types
 - Produces a CLAUDE.md that accurately reflects the user's workflow
 
@@ -34,33 +39,19 @@ This is discovery-based: we learn the user's specific workflow and synthesize it
 - Small teams wanting shared workflow agents
 - Anyone bootstrapping an agent for their specific context
 
-## Command Invocation
+## Skill Invocation
 
-### Command Name
-```
-/init_agent_discovery
-```
-
-### Parameters
-
-None required. This is a conversational discovery command.
-
-### Usage Examples
-
-```bash
-# Start the agent discovery process
-/init_agent_discovery
-```
+This skill is invoked by name (via the Skill tool) or by the user typing `/create-claude-md`. It takes no required arguments; it is a conversational discovery flow.
 
 ## Procedural Requirements
 
 ### Prerequisites
 
 - User should have a general sense of what they want the agent to help with
-- **The agent repository must already exist before running this command**
+- **The agent repository must already exist before running this skill**
   - Assume the repository exists (use `/init_agent` first if needed)
   - Do NOT ask if they have a repository - assume they do
-  - This command configures the agent's memory, not the repository itself
+  - This skill configures the agent's memory, not the repository itself
 
 ### Step-by-Step Workflow
 
@@ -83,7 +74,7 @@ We'll work through:
 3. What frustrates you about it (pain points)
 4. What artifacts you create
 5. How to organize memory based on that workflow
-6. What commands could help automate the hard parts
+6. What skills could help automate the hard parts
 7. Generate your memory structure and starting CLAUDE.md
 
 Let's start by clarifying what this agent is for.
@@ -329,14 +320,14 @@ Does this look right?
 
 #### Step 5: Identify Pain Points & Opportunities
 
-**Purpose**: Map pain points to workflow phases to inform suggested commands.
+**Purpose**: Map pain points to workflow phases to inform suggested skills.
 
 **Actions**:
 
 1. Probe each pain point:
 
 ```
-You mentioned several frustrations earlier. Let me dig into them so I can suggest helpful commands.
+You mentioned several frustrations earlier. Let me dig into them so I can suggest helpful skills.
 
 For each one, I want to understand:
 - When does this happen in your workflow?
@@ -378,30 +369,30 @@ Which of these would be most valuable?
 
 ---
 
-#### Step 6: Suggest Commands
+#### Step 6: Suggest Skills
 
-**Purpose**: Based on discovered workflow and pain points, suggest Claude Code commands for automation.
+**Purpose**: Based on discovered workflow and pain points, suggest Claude Code skills for automation.
 
 **Actions**:
 
-1. Propose commands:
+1. Propose skills:
 
 ```
-Based on your workflow and pain points, here are commands that could help:
+Based on your workflow and pain points, here are skills that could help:
 
-**[Command 1: verb_noun format]** - [What it guides you through]
+**[Skill 1: verb-noun kebab-case]** - [What it guides you through]
 - Addresses: [Pain point from discovery]
 - Would help with: [Specific activity]
 - You'd use it when: [In which phase]
 - Estimated time saved: [Your estimate from pain point discussion]
 
-**[Command 2]** - [Description]
+**[Skill 2]** - [Description]
 - [Same structure]
 
-**[Command 3]** - [Description]
+**[Skill 3]** - [Description]
 - [Same structure]
 
-[Include 3-5 suggested commands, each addressing a discovered pain point]
+[Include 3-5 suggested skills, each addressing a discovered pain point]
 
 **Which of these would be most useful?**
 - All of them?
@@ -411,30 +402,30 @@ Based on your workflow and pain points, here are commands that could help:
 
 2. Wait for user to prioritize.
 
-3. Confirm final command list:
+3. Confirm final skill list:
 
 ```
 Got it! Here's what you want to focus on:
 
-**Priority commands to create:**
-1. /[command] - [Why it matters]
-2. /[command] - [Why it matters]
-3. /[command] - [Why it matters]
+**Priority skills to create:**
+1. /[skill] - [Why it matters]
+2. /[skill] - [Why it matters]
+3. /[skill] - [Why it matters]
 
-After we set up your memory structure, you can create these one at a time using `/create_agent_command`.
+After we set up your memory structure, you can create these one at a time using `/create-skill`.
 
 You don't have to create them all immediately - start with the highest impact one.
 ```
 
 **Validation**:
-- Commands map to discovered pain points
-- Command names follow convention (verb-noun, kebab-case)
-- User has confirmed which commands would be most valuable
-- User understands commands are suggestions for later creation
+- Skills map to discovered pain points
+- Skill names follow convention (verb-noun, kebab-case)
+- User has confirmed which skills would be most valuable
+- User understands skills are suggestions for later creation
 
 **Error Handling**:
-- If user wants too many commands, suggest: "Let's start with the 2-3 most impactful - you can add more later"
-- If suggested commands don't resonate, ask: "What would actually help? What's the hardest part?"
+- If user wants too many skills, suggest: "Let's start with the 2-3 most impactful - you can add more later"
+- If suggested skills don't resonate, ask: "What would actually help? What's the hardest part?"
 
 ---
 
@@ -451,7 +442,7 @@ Before I create everything, let me confirm:
 
 **Memory structure:** [Show the hierarchy]
 **Artifact types:** [List with key fields]
-**Suggested commands:** [List prioritized commands]
+**Suggested skills:** [List prioritized skills]
 **CLAUDE.md purpose:** [One-liner from Step 1]
 
 Does this all look right? Any final adjustments?
@@ -651,21 +642,21 @@ Based on your discovered workflow:
 
 | Stage | Activity | Artifact(s) | Notes |
 |-------|----------|------------|-------|
-| {Stage 1} | {Activity from discovery} | {artifact} | {Pain point addressed by suggested command} |
-| {Stage 2} | {Activity from discovery} | {artifact} | {Pain point addressed by suggested command} |
-| {Stage 3} | {Activity from discovery} | {artifact} | {Pain point addressed by suggested command} |
+| {Stage 1} | {Activity from discovery} | {artifact} | {Pain point addressed by suggested skill} |
+| {Stage 2} | {Activity from discovery} | {artifact} | {Pain point addressed by suggested skill} |
+| {Stage 3} | {Activity from discovery} | {artifact} | {Pain point addressed by suggested skill} |
 
-### Suggested Commands
+### Suggested Skills
 
-Commands that would help automate parts of this workflow:
+Skills that would help automate parts of this workflow:
 
-| Command | Purpose | Helps With | When to Use |
-|---------|---------|-----------|------------|
-| `/[command1]` | {What it guides you through} | {Pain point from Step 5} | {When you'd use it in the workflow} |
-| `/[command2]` | {What it guides you through} | {Pain point from Step 5} | {When you'd use it in the workflow} |
-| `/[command3]` | {What it guides you through} | {Pain point from Step 5} | {When you'd use it in the workflow} |
+| Skill | Purpose | Helps With | When to Use |
+|-------|---------|-----------|------------|
+| `/[skill1]` | {What it guides you through} | {Pain point from Step 5} | {When you'd use it in the workflow} |
+| `/[skill2]` | {What it guides you through} | {Pain point from Step 5} | {When you'd use it in the workflow} |
+| `/[skill3]` | {What it guides you through} | {Pain point from Step 5} | {When you'd use it in the workflow} |
 
-You can create these commands one at a time using `/create_agent_command`.
+You can create these skills one at a time using `/create-skill`.
 
 ## Agent Capabilities
 
@@ -676,7 +667,7 @@ You can create these commands one at a time using `/create_agent_command`.
 - **Navigate memory**: Help find and reference existing artifacts
 - **Maintain consistency**: Ensure artifacts follow templates and stay organized
 
-### Common Commands (from user perspective)
+### Common Requests (from user perspective)
 
 - "Create a new {artifact type}" - Creates artifact using template in correct location
 - "Show me all {artifacts}" - Lists artifacts from memory
@@ -728,19 +719,19 @@ Your agent's memory structure and system prompt are ready!
 1. **Create your first artifact:**
    Ask the agent to create a new {artifact type}
 
-2. **Create your first command:**
-   Use `/create_agent_command` to build the highest-impact suggested command
+2. **Create your first skill:**
+   Use `/create-skill` to build the highest-impact suggested skill
 
 3. **Test the workflow:**
-   Use your new agent and command to see how it feels
+   Use your new agent and skill to see how it feels
 
 4. **Iterate:**
-   Refine CLAUDE.md, add more commands, adjust structure as needed
+   Refine CLAUDE.md, add more skills, adjust structure as needed
 
-**Your suggested commands to create (in priority order):**
-1. /[command] - [Why it matters]
-2. /[command] - [Why it matters]
-3. /[command] - [Why it matters]
+**Your suggested skills to create (in priority order):**
+1. /[skill] - [Why it matters]
+2. /[skill] - [Why it matters]
+3. /[skill] - [Why it matters]
 
 You don't have to create all of them immediately - start with one!
 
@@ -752,13 +743,13 @@ Would you like help with any of these next steps?
 - All template files created with correct content
 - CLAUDE.md created with all discovered information
 - memory/README.md created with structure explanation
-- Suggested commands documented for future creation
+- Suggested skills documented for future creation
 - User understands next steps
 
 **Error Handling**:
 - If files already exist, ask: "I see these files already exist. Should I overwrite them or merge?"
 - If directory creation fails, report error and suggest manual creation
-- If user wants to skip templates, note: "You can always create them later using `/create_agent_command`"
+- If user wants to skip templates, note: "You can always create them later using `/create-skill`"
 
 ---
 
@@ -783,7 +774,7 @@ memory/
 CLAUDE.md:
 - **Purpose**: {One-liner from Step 1}
 - **Constitution**: Why the agent exists, core principles, boundaries
-- **Specification**: Memory structure, artifacts, execution flow, suggested commands
+- **Specification**: Memory structure, artifacts, execution flow, suggested skills
 
 Templates:
 - {artifact-name}.md templates for consistency
@@ -794,20 +785,20 @@ Templates:
 1. **Test artifact creation**: Ask the agent to create a new {artifact type}
    - It will guide you through the template
 
-2. **Create your first command**: Use `/create_agent_command` to build the highest-impact command
-   - Start with: `/[top-priority-command]`
+2. **Create your first skill**: Use `/create-skill` to build the highest-impact skill
+   - Start with: `/[top-priority-skill]`
    - This is where the agent does most of the heavy lifting
 
 3. **Populate memory**: Add your existing {artifacts} to the memory structure
    - Use templates for consistency
 
-4. **Iterate**: As you use the agent, you'll refine CLAUDE.md and add more commands
+4. **Iterate**: As you use the agent, you'll refine CLAUDE.md and add more skills
    - CLAUDE.md Specification section will evolve
    - Constitution (Purpose, Principles) rarely changes
 
 **Would you like to:**
 - Create your first artifact now?
-- Create your first command using `/create_agent_command`?
+- Create your first skill using `/create-skill`?
 - Refine anything in CLAUDE.md?
 
 The structure is ready - now it's about populating and refining it as you work!
@@ -833,7 +824,7 @@ The structure is ready - now it's about populating and refining it as you work!
 
 ### Path Conventions
 
-- **Repository root**: Command runs from repo root; all paths relative to there
+- **Repository root**: Skill runs from repo root; all paths relative to there
 - **Memory directory**: Always `memory/` at repo root
 - **Templates directory**: Always `templates/` at repo root
 - **File names**: kebab-case throughout (e.g., `client-proposal.md`, `project-summary.md`)
@@ -851,11 +842,11 @@ The structure is ready - now it's about populating and refining it as you work!
 - [ ] Artifacts discovered and named (3+ types)
 - [ ] Artifact hierarchy is natural and confirmed by user
 - [ ] Pain points mapped to workflow phases
-- [ ] Automation opportunities identified (3+ suggested commands)
+- [ ] Automation opportunities identified (3+ suggested skills)
 - [ ] Memory directory structure created and matches discovered hierarchy
 - [ ] Artifact templates created and in `templates/` directory
 - [ ] CLAUDE.md generated with Constitution and Specification sections
-- [ ] User understands next steps (create first artifact, create first command)
+- [ ] User understands next steps (create first artifact, create first skill)
 
 ### Test Cases
 
@@ -863,7 +854,7 @@ The structure is ready - now it's about populating and refining it as you work!
 2. **Agency workflow** (clients + projects): Should produce 2-3 level hierarchy
 3. **Complex workflow** (multiple artifact types): Should synthesize natural hierarchy
 4. **Ad-hoc work**: Should identify patterns and suggest structure
-5. **With many pain points**: Should suggest 5+ commands for user to prioritize
+5. **With many pain points**: Should suggest 5+ skills for user to prioritize
 6. **User uncertainty**: Should guide to specificity with concrete examples
 
 ---
@@ -888,27 +879,27 @@ The structure is ready - now it's about populating and refining it as you work!
 - Create files without confirmation
 - Overwhelm with options (focus on what they described)
 - Skip validation steps
-- Suggest too many commands (prioritize high-impact)
-- Create commands yet (just suggest them)
+- Suggest too many skills (prioritize high-impact)
+- Create skills yet (just suggest them)
 - Use jargon (stick to their language)
 
 ---
 
 ## Integration Notes
 
-### Related Commands
+### Related Skills
 
 - `/init_agent` - Use first if the agent repository doesn't exist
-- `/create_agent_command` - Create suggested commands after setup
+- `/create-skill` - Create suggested skills after setup
 - `/create_claude_md` - Deep dive on CLAUDE.md if you want to refine further
 - `/init_org_os` - If building a product framework agent (different purpose)
 
 ### Differences from init_org_os
 
 - **init_org_os**: Discovers product frameworks (Lean, OKRs, EOS) - prescriptive frameworks
-- **init_agent_discovery**: Discovers actual workflow - discovery-based, artifact-focused
+- **create-claude-md**: Discovers actual workflow - discovery-based, artifact-focused
 - **init_org_os**: For teams operationalizing frameworks
-- **init_agent_discovery**: For small org operators automating specific workflows
+- **create-claude-md**: For small org operators automating specific workflows
 
 ---
 
@@ -988,7 +979,7 @@ not just what we assume. It takes 10 minutes but saves weeks of misalignment."
 
 - Proposed structure should be based on discovered workflow, not templates
 - Hierarchy should feel natural to user (not forced)
-- Commands should address identified pain points (not generic)
+- Skills should address identified pain points (not generic)
 - CLAUDE.md should reflect their specific context (not placeholder)
 
 ### User Confirmation Required
@@ -996,25 +987,25 @@ not just what we assume. It takes 10 minutes but saves weeks of misalignment."
 - [ ] Confirmed workflow understanding
 - [ ] Confirmed artifact hierarchy
 - [ ] Confirmed memory structure before file creation
-- [ ] Confirmed which suggested commands matter most
+- [ ] Confirmed which suggested skills matter most
 - [ ] Confirmed CLAUDE.md captures their purpose
 
 ---
 
 ## Next Steps Documentation
 
-After this command completes, the user should know:
+After this skill completes, the user should know:
 
 1. **Memory structure is ready** - They can start creating artifacts
 2. **Templates are available** - For consistency and guidance
 3. **CLAUDE.md is their system prompt** - How the agent operates
-4. **Suggested commands are notes** - They can create with `/create_agent_command`
+4. **Suggested skills are notes** - They can create with `/create-skill`
 5. **They should iterate** - Structure and CLAUDE.md evolve with use
 
 Recommended workflow after initialization:
 
 1. Create first artifact (test the templates)
-2. Create one high-impact command (test the automation)
+2. Create one high-impact skill (test the automation)
 3. Use together (test the workflow)
 4. Refine based on actual usage
-5. Add more commands as needed
+5. Add more skills as needed
